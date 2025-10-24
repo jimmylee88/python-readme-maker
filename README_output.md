@@ -1,21 +1,21 @@
-# sd
+# Test Project
 
 ## Description
-asdasd
+Generates a README in markdown format for github
 
 ## Installation
 To get a copy of this up and running, follow these instructions:
 ```
-asdasd
+python3 main.py
 ```
 
 ## Usage
-asdasd
+Answer all questions to get data to put into the README
 
 ## Contact
-- asd
-- asdasd
+- Jimmy
+- hello@here
 
 ## License
-This project is licensd under Apache License 2.0.
+This project is licensd under Creative Commons Zero v1.0 Universal.
     

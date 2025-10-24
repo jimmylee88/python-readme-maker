@@ -1,4 +1,3 @@
-import os
 import time
 from InquirerPy import prompt
 from InquirerPy.base.control import Choice
@@ -19,13 +18,7 @@ def collect_main_input():
     ]
 
     answers = prompt(questions)
-
-    if answers is None or not answers:
-        print("\nReadme generation cancelled")
-        exit()
-
     return answers
-
 
 def collect_license(current_answers):
     license_questions = [
@@ -40,7 +33,7 @@ def collect_license(current_answers):
         {
             "type": "list",
             "name": "license_type",
-            "message": "Select a license:\n",
+            "message": "Select a license:",
             "choices": [
                 "Apache License 2.0",
                 "GNU General Public License v3.0",
@@ -95,18 +88,17 @@ This project is licensd under {answers['license']}.
 
 def save_readme_file(markdown_text, filename="README_output.md"):
     try:
-        with open(filename, 'w', encoding='utf-8') as f:
+        with open(filename, 'w') as f:
             f.write(markdown_text)
-    except IOError as e:
-        console.print(f"Could not write to file {filename}")
-        console.prinit(f"Details: {e}")
-        exit()
+    except Exception as e:
+        console.print(f"Error creating markdown file: {e}")
 
 if __name__ == "__main__":
 
     # Display a formatted welcome message with Rich
     console.print(
         """
+        \n
     ░██     ░██            ░██ ░██            ░██ 
     ░██     ░██            ░██ ░██            ░██ 
     ░██     ░██  ░███████  ░██ ░██  ░███████  ░██ 
@@ -116,7 +108,7 @@ if __name__ == "__main__":
     ░██     ░██  ░███████  ░██ ░██  ░███████  ░██ 
                                                                                         
         \n""",
-    "[bold yellow]Welcome to the Readme generator![/bold yellow]\n",
+    "[bold yellow]Welcome to the Readme generator! 🤓[/bold yellow]\n",
     "Please enter details for your repository. \n",
     )
 
@@ -139,4 +131,4 @@ if __name__ == "__main__":
     # Save the file
     save_readme_file(readme_markdown)
 
-    console.print("[bold green]Your Readme markdown file is ready![/bold green] ✅")
+    console.print("[bold green]Your Readme markdown file is ready![/bold green] ✅\n")
