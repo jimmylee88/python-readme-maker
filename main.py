@@ -72,7 +72,6 @@ To get a copy of this up and running, follow these instructions:
 ```
 {answers['installation']}
 ```
-
 ## Usage
 {answers['usage']}
 
