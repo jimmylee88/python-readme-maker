@@ -1,7 +1,7 @@
-# Test Project
+# Python Readme Maker
 
 ## Description
-Generates a README in markdown format for github
+Tool to help generate markdown files for github repository README
 
 ## Installation
 To get a copy of this up and running, follow these instructions:
@@ -10,11 +10,11 @@ python3 main.py
 ```
 
 ## Usage
-Answer all questions to get data to put into the README
+Answer the questions, and select a licence from the list to populate the markdown template
 
 ## Contact
 - Jimmy
-- hello@here
+- github.com/jimmylee88
 
 ## License
 This project is licensd under Creative Commons Zero v1.0 Universal.
