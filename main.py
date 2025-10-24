@@ -10,14 +10,19 @@ console = Console()
 
 # Display a formatted welcome message with Rich
 console.print(
-    "[bold yellow]Hello, welcome to the Readme generator![/bold yellow]\n",
-    "🤓 \n",
+    "[bold yellow]Welcome to the Readme generator![/bold yellow]\n",
+    "Please enter details for your repository. \n",
 )
 
 # Get user input with Inquirer
 questions = [
     {"type": "input", "name": "project", "message": "What is your Project Name?"},
     {"type": "input", "name": "description", "message": "What is your Project about?"},
+    {"type": "input", "name": "installation", "message": "What are the installation instructions?"},
+    {"type": "input", "name": "usage", "message": "How do you want it to be used?"},
+    {"type": "input", "name": "author", "message": "What is the author name?"},
+    {"type": "input", "name": "contact", "message": "Please provide contact"},
+
 ]
 answers = prompt(questions)
 
@@ -26,35 +31,28 @@ def main():
         {
             "type": "list",
             "message": "Add a license for the repo?",
-            "choices": ["Choose license", Choice(value=None, name="None")],
+            "choices": ["Yes", Choice(value=None, name="No license")],
             "default": None,
         },
         {
             "type": "list",
-            "message": "Select the license:",
+            "message": "Select a license:\n",
             "choices": [
                 Choice("licence-type", name="Apache License 2.0"),
                 Choice("licence-type", name="GNU General Public License v3.0"),
                 Choice("licence-type", name="MIT License"),
-                Choice("licence-type", name="BSD 2-Clause 'Simplified' License"),
-                Choice("licence-type", name="BSD 3-Clause 'New' or 'Revised' License"),
-                Choice("licence-type", name="Boost Software License 1.0"),
                 Choice("licence-type", name="Creative Commons Zero v1.0 Universal"),
-                Choice("licence-type", name="Eclipse Public License 2.0"),
-                Choice("licence-type", name="GNU Affero General Public License v3.0"),
-                Choice("licence-type", name="GNU General Public License v2.0"),
-                Choice("licence-type", name="GNU Lesser General Public License v2.1"),
+                Choice("licence-type", name="GNU Lesser General Public License v3"),
                 Choice("licence-type", name="Mozilla Public License 2.0"),
                 Choice("licence-type", name="The Unilicense"),
             ],
             "multiselect": False,
-            "transformer": lambda result: f"{len(result)} licence{'s' if len(result) > 1 else ''} selected",
+            "transformer": lambda result: f"{(result)} selected\n",
             "when": lambda result: result[0] is not None,
         },
     ]
 
     result = prompt(questions=questions)
-
 
 if __name__ == "__main__":
     main()
