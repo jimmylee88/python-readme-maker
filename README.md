@@ -20,8 +20,6 @@ There are also other functions available from InquirerPy that would allow more d
 
 ## Video walkthrough
 
-<iframe src="https://player.vimeo.com/video/1130492143?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="400" height="300" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="video_walkthrough"></iframe>
-
 <br>
 
 **Example output below this line**
