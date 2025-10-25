@@ -20,11 +20,18 @@ There are also other functions available from InquirerPy that would allow more d
 
 ## Video walkthrough
 
+
+
+https://github.com/user-attachments/assets/195b667b-7f31-477c-b0c2-4ffe018abed6
+
+
+
 <br>
 
 **Example output below this line**
 
 ___
+
 <br>
 
 # Python Readme Maker
