@@ -19,7 +19,7 @@ There are also other functions available from InquirerPy that would allow more d
 <br><br>
 
 ## Video walkthrough
-<video src="https://github.com/jimmylee88/python-readme-maker/blob/main/video_walkthrough.mp4" width="640" height="auto" controls></video>
+<video src="./video_walkthrough.mp4" width="640" height="320" controls></video>
 
 <br>
 **Example output below this line**
