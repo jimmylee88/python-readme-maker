@@ -72,6 +72,7 @@ To get a copy of this up and running, follow these instructions:
 ```
 {answers['installation']}
 ```
+
 ## Usage
 {answers['usage']}
 
@@ -82,6 +83,8 @@ To get a copy of this up and running, follow these instructions:
 ## License
 This project is licensd under {answers['license']}.
     
+___
+
 """
     return markdown_content
 
@@ -107,7 +110,7 @@ if __name__ == "__main__":
     ░██     ░██  ░███████  ░██ ░██  ░███████  ░██ 
                                                                                         
         \n""",
-    "[bold yellow]Welcome to the Readme generator! 🤓[/bold yellow]\n",
+    "[bold yellow]🤖 Welcome to the Readme generator! 🤖[/bold yellow]\n",
     "Please enter details for your repository. \n",
     )
 
@@ -122,6 +125,7 @@ if __name__ == "__main__":
 
     # Uses Rich to show a progress bar then a confirmation message
     with Progress() as progress:
+        console.print("")
         task = progress.add_task("Processing...", total=100)
         for _ in range(10):
             time.sleep(0.1)
