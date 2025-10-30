@@ -1,20 +1,20 @@
 # Test Title
 
 ## Description
-Description goes here
+Description of Project
 
 ## Installation
 To get a copy of this up and running, follow these instructions:
 ```
-Installation formatted as code block
+Installation in code block
 ```
 
 ## Usage
-Usage suggestions
+Usage
 
 ## Contact
 - Jimmy
-- github.com/jimmylee88
+- here@github
 
 ## License
 This project is licensd under Creative Commons Zero v1.0 Universal.
