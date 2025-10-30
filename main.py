@@ -19,20 +19,20 @@ console.print(Text(
     ░██     ░██  ░███████  ░██ ░██  ░███████  ░██ 
                                                                                         
         \n"""),
-    Text("🤖 Welcome to Jimmy's Python Readme Maker! 🤖\n"),
-    Text("Please enter details for your repository. \n"),
+    Text("🐍 Welcome to Jimmy's Python Readme Maker! \n",),
+    Text("🐍 Please enter details for your repository. \n"),
     )
 
 # Get user input with Inquirer
 licenses = [
+    "None",
     "Apache License 2.0",
     "GNU General Public License v3.0",
     "MIT License",
     "Creative Commons Zero v1.0 Universal",
     "GNU Lesser General Public License v3",
     "Mozilla Public License 2.0",
-    "The Unilicense",
-    "None"
+    "The Unilicense"
 ]
 
 questions = [
@@ -47,6 +47,7 @@ questions = [
 
 answers = prompt(questions)
 
+# Formatting of markdown file output
 markdown_content = f"""# {answers['project']}
 
 ## Description
@@ -74,15 +75,14 @@ ___
 
 # Outputs as README_output.md to distinguish from actual readme for repo and assignment submission
 with open("README_output.md", 'w') as f:
-            f.write(markdown_content)
+    f.write(markdown_content)
 
 # Uses Rich to show a progress bar then a confirmation message
-if __name__ == "__main__":
-    with Progress() as progress:
-        console.print("")
-        task = progress.add_task("Processing...", total=100)
-        for _ in range(10):
-            time.sleep(0.1)
-            progress.update(task, advance=10)
+with Progress() as progress:
+    console.print("")
+    task = progress.add_task("Processing...", total=100)
+    for _ in range(10):
+        time.sleep(0.1)
+        progress.update(task, advance=10)
 
-console.print(Text("Your Readme markdown file is ready! ✅\n"))
+console.print(Text("✅ Your Readme markdown file is now ready to use! \n", rainbow=True))
