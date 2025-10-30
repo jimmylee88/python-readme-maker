@@ -1,68 +1,53 @@
 import time
 from InquirerPy import prompt
-from InquirerPy.base.control import Choice
 from rich.console import Console
 from rich.progress import Progress 
+from rich_gradient.text import Text 
 
 console = Console()
 
-def collect_main_input():
-    # Get user input with Inquirer
-    questions = [
-        {"type": "input", "name": "project", "message": "What is your Project Name?"},
-        {"type": "input", "name": "description", "message": "What is your Project about?"},
-        {"type": "input", "name": "installation", "message": "What are the installation instructions?"},
-        {"type": "input", "name": "usage", "message": "How do you want it to be used?"},
-        {"type": "input", "name": "author", "message": "What is the author name?"},
-        {"type": "input", "name": "contact", "message": "Please provide contact"},   
-    ]
+# Display a formatted welcome message with Rich and rich_gradient
+console.print(Text(
+        """ 
+        \n
+    ░██     ░██            ░██ ░██            ░██ 
+    ░██     ░██            ░██ ░██            ░██ 
+    ░██     ░██  ░███████  ░██ ░██  ░███████  ░██ 
+    ░██████████ ░██    ░██ ░██ ░██ ░██    ░██ ░██ 
+    ░██     ░██ ░█████████ ░██ ░██ ░██    ░██ ░██ 
+    ░██     ░██ ░██        ░██ ░██ ░██    ░██     
+    ░██     ░██  ░███████  ░██ ░██  ░███████  ░██ 
+                                                                                        
+        \n"""),
+    Text("🤖 Welcome to Jimmy's Python Readme Maker! 🤖\n"),
+    Text("Please enter details for your repository. \n"),
+    )
 
-    answers = prompt(questions)
-    return answers
+# Get user input with Inquirer
+licenses = [
+    "Apache License 2.0",
+    "GNU General Public License v3.0",
+    "MIT License",
+    "Creative Commons Zero v1.0 Universal",
+    "GNU Lesser General Public License v3",
+    "Mozilla Public License 2.0",
+    "The Unilicense",
+    "None"
+]
 
-def collect_license(current_answers):
-    license_questions = [
-        {
-            "type": "list",
-            "name": "add_license",
-            "message": "Add a license for the repo?",
-            "choices": ["Yes", Choice(value="No License Selected", name="No license")],
-            "default": "Yes",
-        },
+questions = [
+    {"type": "input", "name": "project", "message": "What is your Project Name?"},
+    {"type": "input", "name": "description", "message": "What is your Project about?"},
+    {"type": "input", "name": "installation", "message": "What are the installation instructions?"},
+    {"type": "input", "name": "author", "message": "What is the author name?"},
+    {"type": "input", "name": "usage", "message": "How do you want it to be used?"},
+    {"type": "input", "name": "contact", "message": "Please provide contact"}, 
+    {"type": "list", "name": "license", "message": "Choose a License:", "choices": licenses}  
+ ]
 
-        {
-            "type": "list",
-            "name": "license_type",
-            "message": "Select a license:",
-            "choices": [
-                "Apache License 2.0",
-                "GNU General Public License v3.0",
-                "MIT License",
-                "Creative Commons Zero v1.0 Universal",
-                "GNU Lesser General Public License v3",
-                "Mozilla Public License 2.0",
-                "The Unilicense",
-            ],
-            "when": lambda answers: answers.get("add_license") == "Yes",
-        },
-    ]
+answers = prompt(questions)
 
-    # prompt user for license details
-    license_answers = prompt(license_questions)
-
-    # merge license answers into main answers
-    current_answers.update(license_answers)
-
-    # ensure a license field exists
-    if "license_type" not in current_answers:
-        current_answers['license'] = "No license selected"
-    else:
-        current_answers['license'] = current_answers['license_type']
-
-    return current_answers
-
-def generate_markdown(answers):
-    markdown_content = f"""# {answers['project']}
+markdown_content = f"""# {answers['project']}
 
 ## Description
 {answers['description']}
@@ -86,44 +71,13 @@ This project is licensd under {answers['license']}.
 ___
 
 """
-    return markdown_content
 
-def save_readme_file(markdown_text, filename="README_output.md"):
-    try:
-        with open(filename, 'w') as f:
-            f.write(markdown_text)
-    except Exception as e:
-        console.print(f"Error creating markdown file: {e}")
+# Outputs as README_output.md to distinguish from actual readme for repo and assignment submission
+with open("README_output.md", 'w') as f:
+            f.write(markdown_content)
 
+# Uses Rich to show a progress bar then a confirmation message
 if __name__ == "__main__":
-
-    # Display a formatted welcome message with Rich
-    console.print(
-        """
-        \n
-    ░██     ░██            ░██ ░██            ░██ 
-    ░██     ░██            ░██ ░██            ░██ 
-    ░██     ░██  ░███████  ░██ ░██  ░███████  ░██ 
-    ░██████████ ░██    ░██ ░██ ░██ ░██    ░██ ░██ 
-    ░██     ░██ ░█████████ ░██ ░██ ░██    ░██ ░██ 
-    ░██     ░██ ░██        ░██ ░██ ░██    ░██     
-    ░██     ░██  ░███████  ░██ ░██  ░███████  ░██ 
-                                                                                        
-        \n""",
-    "[bold yellow]🤖 Welcome to the Readme generator! 🤖[/bold yellow]\n",
-    "Please enter details for your repository. \n",
-    )
-
-    # collect_main_input answers
-    all_answers = collect_main_input()
-
-    # merge answers from license to main_input
-    all_answers = collect_license(all_answers)
-
-    # Generate the markdown content
-    readme_markdown = generate_markdown(all_answers)
-
-    # Uses Rich to show a progress bar then a confirmation message
     with Progress() as progress:
         console.print("")
         task = progress.add_task("Processing...", total=100)
@@ -131,7 +85,4 @@ if __name__ == "__main__":
             time.sleep(0.1)
             progress.update(task, advance=10)
 
-    # Save the file
-    save_readme_file(readme_markdown)
-
-    console.print("[bold green]Your Readme markdown file is ready![/bold green] ✅\n")
+console.print(Text("Your Readme markdown file is ready! ✅\n"))
