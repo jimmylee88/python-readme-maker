@@ -27,7 +27,7 @@ https://github.com/user-attachments/assets/978bbfea-a302-441d-9d00-1a2cb82bfc61
 
 <br>
 
-# *Example output below this line* 👇
+*Example output below this line* 👇
 
 ___
 
