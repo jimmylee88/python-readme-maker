@@ -67,7 +67,7 @@ To get a copy of this up and running, follow these instructions:
 - {answers['contact']}
 
 ## License
-This project is licensd under {answers['license']}.
+This project is licensed under {answers['license']}.
     
 ___
 
