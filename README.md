@@ -9,7 +9,7 @@ Python Libraries used:
 - Rich_gradient
 
 With the python code examples from our class lessons, I was able to use these to form the basis of structuring the Python script. 
-The tool asks the user a series of questions, collects the input from answers, and presents it in a visually appealing CLI using Rich and Rich Gradient. It then saves a markdown file ready to be used as a README for a GitHub repository. Please note that the tool outputs the filename as *README_output.md*. This was so that I could still distinguise between output from the tool, and this very README that I'm writing now.
+The tool asks the user a series of questions, collects the input from answers, and presents it in a visually appealing CLI using Rich and Rich Gradient. It then saves a markdown file ready to be used as a README for a GitHub repository. Please note that the tool outputs the filename as *README_output.md*. This was so that I could still distinguish between output generated from the tool, and this very README that I'm writing now.
 
 I also used this tool for the intro to welcome the user in the CLI.<br>
 [ASCII text art generator](https://patorjk.com/software/taag/#p=display&f=Terrace&t=Hello%21&x=none&v=4&h=4&w=80&we=false)
